@@ -13,6 +13,16 @@ public class JavaExercises {
      */
     public static void starTriangle() {
         // TODO: Fill in this function
+        for (int i = 0; i < 6; i ++) {
+            StringBuilder x = new StringBuilder();
+            for (int a = i ;a < 5;a ++ ) {
+                x.append(" ");
+            }
+            for (int b = i - 1 ; b > -1 ; b --) {
+                x.append("*");
+            }
+            System.out.print(x + System.lineSeparator());
+        }
     }
 
     /**
@@ -21,6 +31,14 @@ public class JavaExercises {
      */
     public static void printIndexed(String s) {
         // TODO: Fill in this function
+        int l = s.length();
+        String x = "";
+        for(int i = l; i > 0 ; i--) {
+            String b = Integer.toString(i);
+            x += s.charAt(l-i);
+            x += b;
+        }
+        System.out.println(x);
     }
 
     /**
@@ -29,7 +47,15 @@ public class JavaExercises {
      */
     public static String stutter(String s) {
         // TODO: Fill in this function
-        return null;
+       int l = s.length();
+        String x = "";
+        for (int a = 0; a < l ; a ++){
+            for (int i = 0 ; i <2 ; i ++){
+                x += s.charAt(a);
+            }
+        }
+
+        return x;
     }
 
     /**
@@ -43,7 +69,20 @@ public class JavaExercises {
      */
     public static int quadrant(int x, int y) {
         // TODO: Fill in this function
-        return 0;
+        int a;
+        if (x > 0 && y >0) {
+            a = 1;
+        } else if (x < 0 && y >0) {
+            a = 2;
+        } else if (x < 0 && y < 0) {
+            a = 3;
+        } else if (x > 0 && y <0) {
+            a = 4;
+        } else {
+            a = 0;
+        }
+
+        return a;
     }
 
     public static void main(String[] args) {
