@@ -3,6 +3,7 @@ package game2048logic;
 import game2048rendering.Side;
 import net.sf.saxon.functions.ConstantFunction;
 import net.sf.saxon.functions.Minimax;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -61,7 +62,6 @@ public class GameLogic {
             }
         }
         return 0;
-
     }
 
     /**
@@ -73,8 +73,20 @@ public class GameLogic {
      */
     public static void tiltColumn(int[][] board, int c) {
         // TODO: fill this in in task 5
-        return;
-    }
+        int now_minR = 0;
+        for (int now_r = 1;now_r  <= 3;now_r ++){
+            int find_non_zero = moveTileUpAsFarAsPossible(board, now_r, c,now_minR);
+            if (find_non_zero != 0){
+                now_minR = find_non_zero;
+                for(int temp_r = now_r - 1;temp_r != -1 && board[temp_r][c] == 0 ; temp_r --){
+                    board[temp_r][c] = board[now_r][c];
+                    board[now_r][c] = 0;
+                    now_minR = temp_r;
+                }
+            }
+        }
+        }
+
 
     /**
      * Modifies the board to simulate tilting all columns upwards.
